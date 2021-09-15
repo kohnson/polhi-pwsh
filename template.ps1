@@ -17,7 +17,7 @@ function Write-Say {
 		[string]
 		$txt
 		)
-	Write-Host -ForegroundColor Blue -NoNewLine "$name`: "
+	Write-Host -ForegroundColor Cyan -NoNewLine "$name`: "
 	$txt -split "" |
 		ForEach-Object{
 			Write-Host $_ -NoNewLine -ForegroundColor Yellow
