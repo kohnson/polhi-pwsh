@@ -1,7 +1,4 @@
 #!/usr/bin/pwsh
-## A script for figuring out how to do various mechanics in the game
-
-# Lets go
 # Writing speech from a character
 
 # init
@@ -43,4 +40,3 @@ function Write-Two {
 
 Write-Say -name "Mech" -txt "One Two Three Four Five"
 Write-Two -txt "This is a secondary line in which i discuss my moonshine."
-
