@@ -38,5 +38,6 @@ function Write-Two {
 		Write-Output ""
 }
 
-Write-Say -name "Mech" -txt "One Two Three Four Five"
-Write-Two -txt "This is a secondary line in which i discuss my moonshine."
+# Usage examples
+# Write-Say -name "Mech" -txt "One Two Three Four Five"
+# Write-Two -txt "This is a secondary line in which i discuss my moonshine."
