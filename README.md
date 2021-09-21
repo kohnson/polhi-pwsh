@@ -12,11 +12,11 @@ Credits
 
 Info
 ----
-> When's it coming out?
-When grill finishes it. Be patient.
-> How will the powershell version work?
-It's a text-based story that runs in your terminal.
-> The default powershell colours are ugly.
+> When's it coming out?<br/>
+When grill finishes it. Be patient.<br/>
+> How will the powershell version work?<br/>
+It's a text-based story that runs in your terminal.<br/>
+> The default powershell colours are ugly.<br/>
 Right-click the title bar, select "Properties", and change them to your liking.
 Do the same thing in the "Defaults" section.
 
