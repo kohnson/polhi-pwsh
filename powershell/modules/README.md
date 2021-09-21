@@ -1,4 +1,4 @@
-Template Scripts
+Module Scripts
 ================
 
 These scripts each contain a function or two that acts as a mechanic in the game.
