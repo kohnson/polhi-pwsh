@@ -17,7 +17,19 @@ function Save-Status {
 	# All variables will have their name stored in .\vars.db
 	# For example:
 	"#!/usr/bin/pwsh`n## MechanicalPhoenix Dating Simulator save file`n## DO NOT EDIT`n" > $SaveFile # Only one ">" is used so the older version is overwritten completely
-	ForEach ($line in Get-Content .\vars.db) {
-		"$line = $($line)" >> $SaveFile
-	}
+	ForEach ($line in Get-Content .\vars.db) {	## btw, the syntax for vars.db will be like so:
+		"$line = $($line)" >> $SaveFile		# $chapter
+	}						# $secondvar
+}							## and so on...
+
+function Restore-Status {
+	Write-Host -BackgroundColor DarkBlue "Restore Saved Game"
+	Write-Host -ForegroundColor Green "Select a save to restore, or leave blank to start fresh."
+	$(Get-ChildItem -Name .\saves) -Replace ".ps1", ""
+
+	$SaveName = Read-Host -Prompt "Select a save slot."
+	Import-Module ".\saves\$SaveName.ps1"
+	
+	# Pick up from a chapter start
+	Invoke-Expression $chapter
 }
