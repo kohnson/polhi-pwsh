@@ -4,6 +4,21 @@
 # init
 $Random = New-Object System.Random
 
+function Get-NameColour {
+	param (
+		[Parameter (Mandatory = $true)] # Character name
+		[string]
+		$name
+		)
+	# At this point, there would be a switch statement that outputs a different colour based on the contents of $name
+	Switch ($name) {
+		"PossibleName1" {Write-Output "Blue"}
+		"PossibleName2" {Write-Output "Yellow"}
+		"PossibleName3" {Write-Output "Green"}
+	}
+	# And so on. This will be filled once the script is done and I can get a complete character list.
+}
+
 function Write-Say {
 	param (
 		[Parameter (Mandatory = $true)] # Name param
@@ -15,7 +30,7 @@ function Write-Say {
 		$txt
 		)
 
-	Write-Host -ForegroundColor Cyan -NoNewLine "$name`: "
+	Write-Host -ForegroundColor $(Get-NameColour -name $name) -NoNewLine "$name`: "
 	$txt -split "" |
 		ForEach-Object{
 			Write-Host $_ -NoNewLine
