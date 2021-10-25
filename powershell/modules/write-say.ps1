@@ -18,7 +18,7 @@ function Write-Say {
 	Write-Host -ForegroundColor Cyan -NoNewLine "$name`: "
 	$txt -split "" |
 		ForEach-Object{
-			Write-Host $_ -NoNewLine -ForegroundColor Yellow
+			Write-Host $_ -NoNewLine
 			Start-Sleep -milliseconds $(1 + $Random.Next(200))
 		}
 	Write-Output ""
@@ -32,7 +32,7 @@ function Write-Two {
 		)
 	$txt -split "" |
 		ForEach-Object {
-			Write-Host $_ -NoNewLine -ForegroundColor Yellow
+			Write-Host $_ -NoNewLine
 			Start-Sleep -milliseconds $(1 + $Random.Next(100))
 		}
 		Write-Output ""
