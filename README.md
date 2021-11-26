@@ -1,5 +1,8 @@
-The MechanicalPhoenix Dating Simulator
-======================================
+Polcompistan High
+=================
+
+LOL! I will not be continuing this (i am very tired)
+====================================================
 
 TODO: insert game description here
 
