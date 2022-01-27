@@ -6,7 +6,9 @@
 $Random = New-Object System.Random
 
 function Save-Status { # Save the game and pick up where you left off.
-	Write-Host -BackgroundColor DarkBlue "Save Game"
+	$SaveVars = @(Get-Content ./vars.db) # init
+	
+	Write-Host -ForegroundColor Yellow "Save Game"
 	Write-Host -ForegroundColor Green  "Use an existing name to overwrite a save, or write a new name to create another slot."
 	Write-Host -ForegroundColor Green "Save names are not case-sensitive."
 	$(Get-ChildItem -Name .\saves) -Replace ".ps1", ""
@@ -19,7 +21,7 @@ function Save-Status { # Save the game and pick up where you left off.
 	# For example:
 	"#!/usr/bin/pwsh`n## MechanicalPhoenix Dating Simulator save file`n## DO NOT EDIT`n" > $SaveFile # Overwrite previous iteration
 	ForEach ($line in Get-Content .\vars.db) {	## btw, the syntax for vars.db will be like so:
-		"$line = $($line)" >> $SaveFile		# $chapter
+		"$line = $_" >> $SaveFile		# $chapter
 	}						# $secondvar
 }							## and so on...
 
@@ -35,7 +37,26 @@ function Restore-Status { # Pick up where you left off
 	Invoke-Expression $chapter
 }
 
-function Write-Say {
+function ncolor {
+	param (
+		[Parameter (Mandatory = $true)] # Name param
+		[string]
+		$name
+	)
+
+	Switch ($name) {
+		"Moss" {"White"}
+		"bread eater" {"Magenta"}
+		"Mech" {"DarkBlue"}
+		"Erwin" {"Red"}
+		"Mitsuu" {"Green"}
+		"Pope" {"Yellow"}
+		"Cashier" {"Blue"}
+		"Narrator" {"White"}
+	}
+}
+
+function say {
 	param (
 		[Parameter (Mandatory = $true)] # Name param
 		[string]
@@ -46,25 +67,10 @@ function Write-Say {
 		$txt
 		)
 
-	Write-Host -ForegroundColor Cyan -NoNewLine "$name`: "
+	Write-Host -ForegroundColor $(ncolor $name) -NoNewLine "$name`: "
 	$txt -split "" |
 		ForEach-Object{
 			Write-Host $_ -NoNewLine
-			Start-Sleep -Milliseconds $(1 + $Random.Next(200))
+			Start-Sleep -Milliseconds $(1 + $Random.Next(50))
 		}
 }
-
-function Write-Two {
-	param (
-		[Parameter (Mandatory = $true, ParameterSetName = "Text")] # Text param
-		[string]
-		$txt
-		)
-	$txt -split "" |
-		ForEach-Object {
-			Write-Host $_ -NoNewLine
-			Start-Sleep -milliseconds $(1 + $Random.Next(100))
-		}
-		Write-Output ""
-}
-
